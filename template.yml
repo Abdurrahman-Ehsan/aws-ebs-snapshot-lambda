@@ -1,0 +1,16 @@
+Resources:
+  EC2VolumeSnapshot:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: EC2_Backup_Automation_with_Lambda_16.lambda_handler
+      Runtime: python3.14
+      CodeUri: .
+      Policies:
+        - Version: '2012-10-17'
+          Statement:
+            - Effect: Allow
+              Action:
+                - ec2:CreateSnapshot
+                - ec2:DescribeVolumes
+                - ec2:DescribeSnapshots
+              Resource: '*'
